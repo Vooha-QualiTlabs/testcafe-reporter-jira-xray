@@ -1,3 +1,5 @@
+'use strict';
+
 const Request = require('request');
 const fs = require('fs');
 
