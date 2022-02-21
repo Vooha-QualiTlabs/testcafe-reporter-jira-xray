@@ -81,6 +81,6 @@
     "handle-callback-err": 0
   },
   "env": {
-    "node": true
+    "mocha": true
   }
 }

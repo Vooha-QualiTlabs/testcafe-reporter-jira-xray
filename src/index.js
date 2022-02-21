@@ -1,6 +1,7 @@
 
 var xray = require( '../test/utils/xray');
 
+
 let executionId;
 
 module.exports = function () {  
@@ -82,9 +83,9 @@ module.exports = function () {
             if (testRunStatus == 'FAILED') {
                 // Add Error message as comments to Test Run
                 await xray.addCommentToTestRun(testRunId, testRunError);
-                               
-                // Add Evidence Screenshots to Test Run
-                for (let i = 1; i <= testRunInfo.screenshots.length; i++) {
+                
+                // Add Evidence Screenshots to Test Run                
+                for (let i = 1; i <= testRunInfo.screenshots.length; i++) {                    
                     var imagePaths = testRunInfo.screenshots[i - 1].screenshotPath;
                     var imageData = await xray.base64_encode(imagePaths);
 
