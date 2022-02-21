@@ -91,7 +91,7 @@ async function getAuthTokenForXray () {
     return new Promise((resolve, reject) => {
         Request.post({
             headers: { 'Content-Type': 'application/json' },
-            url:     'https://xray.cloud.getxray.app/api/v2/authenticate',
+            url:     `https://${process.env.XRAY_URL}/api/v2/authenticate`,
             body:    JSON.stringify({ client_id: `${process.env.XRAY_CLIENT_ID}`, client_secret: `${process.env.XRAY_CLIENT_SECRET}` }),
         }, (error, response, body) => {
             if (error) 
