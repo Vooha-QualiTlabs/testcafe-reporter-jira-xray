@@ -2,7 +2,7 @@
   "name": "testcafe-reporter-xray-jira",
   "version": "1.0.0",
   "description": "xray-jira TestCafe reporter plugin.",
-  "repository": "https://github.com/Voohan3/testcafe-reporter-xray-jira",
+  "repository": "https://github.com/Vooha-QualiTlabs/testcafe-reporter-xray-jira",
   "author": {
     "name": "VoohaN",
     "email": "50583330+VoohaN@users.noreply.github.com"
