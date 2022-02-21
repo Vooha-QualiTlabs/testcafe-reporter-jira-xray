@@ -3,14 +3,34 @@
 
 This is the **xray-jira** reporter plugin for [TestCafe](http://devexpress.github.io/testcafe).
 
-<p align="center">
-    <img src="https://raw.github.com/Vooha-QualiTlabs/testcafe-reporter-xray-jira/master/media/preview.png" alt="preview" />
-</p>
+## How it Works?
+
+This reporter creates Test Execution for the current Execution with `Test Execution for Windows Chrome Feb-dd-2022` format. Adds the Tests to the Test Run and update the Results to the Test Runs. It adds Screenshots as Evidence and Errors as comment to the Failed Tests.
+
+Define the test as below:
+
+test('**XRAY-50** Test Fuctionality name', async () => {
+
+// Do Some thing
+
+});
+
+`Jira Test Id should be added to the name of the Test case -- XRAY-50` 
 
 ## Install
 
 ```
 npm install testcafe-reporter-xray-jira
+```
+## Define env variables
+
+```
+JIRA_BASE_URL= https://xxxx.atlassian.net/ 
+JIRA_AUTH = Basic xxxxxxxxxxxxx
+JIRA_PROJECT_KEY= YOUR_JIRA_PROJECT_KEY
+XRAY_CLIENT_ID = YOU_CAN_GET_IT_FROM_XRAY_API_KEYS
+XRAY_CLIENT_SECRET = YOU_CAN_GET_IT_FROM_XRAY_API_KEYS
+
 ```
 
 ## Usage
