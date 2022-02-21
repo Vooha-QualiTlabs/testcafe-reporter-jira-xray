@@ -5,7 +5,7 @@ const fs = require('fs');
 
 require('dotenv').config();
 
-let authToken = 'default';
+let authToken = '';
 
 async function getTestExecutions () {
     var getTestExecutionsQueryString = `{\n    getTestExecutions(jql: "project ='${process.env.JIRA_PROJECT_KEY}'", limit: 100) {\n        total\n        start\n        limit\n        results {\n            issueId\n            jira(fields: ["summary"])\n        }\n    }\n}`;
@@ -104,7 +104,7 @@ async function getAuthTokenForXray () {
 }
 
 async function sendRequestToXrayGraphQL (queryString) {
-    if (authToken == 'default') 
+    if (authToken == '') 
         authToken = await getAuthTokenForXray();
     
     return new Promise((resolve, reject) => {
