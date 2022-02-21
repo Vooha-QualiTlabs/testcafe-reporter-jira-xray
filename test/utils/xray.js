@@ -18,7 +18,6 @@ async function getTestExecutions () {
 async function getExistingExecutions (testExecutionName) {
     const testExecutions = await getTestExecutions();
 
-    // console.log('testExecutions: ', testExecutions);
     for (let i = 0; i < testExecutions.length; i++) {
         if (testExecutions[i].jira.summary == testExecutionName) 
             return testExecutions[i].issueId;
