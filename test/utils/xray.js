@@ -78,7 +78,7 @@ async function getIssueId (ticketId) {
         Request.get({
             headers: { 'content-type': 'application/json', Authorization: `${process.env.JIRA_AUTH}` },
             url:     `${process.env.JIRA_BASE_URL}rest/api/3/issue/${ticketId}`,
-        }, (error, /*response,*/ body) => {
+        }, (error, response, body) => {
             if (error) 
                 reject(error);
         
@@ -91,9 +91,9 @@ async function getAuthTokenForXray () {
     return new Promise((resolve, reject) => {
         Request.post({
             headers: { 'Content-Type': 'application/json' },
-            url:     `https://${process.env.XRAY_URL}/api/v2/authenticate`,
+            url:     `https://xray.cloud.getxray.app/api/v2/authenticate`,
             body:    JSON.stringify({ client_id: `${process.env.XRAY_CLIENT_ID}`, client_secret: `${process.env.XRAY_CLIENT_SECRET}` }),
-        }, (error, /*response,*/ body) => {
+        }, (error, response, body) => {
             if (error) 
                 reject(error);
           
@@ -109,9 +109,9 @@ async function sendRequestToXrayGraphQL (queryString) {
     return new Promise((resolve, reject) => {
         Request.post({
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${authToken}` },
-            url:     `https://${process.env.XRAY_URL}/api/v2/graphql`,
+            url:     `https://xray.cloud.getxray.app/api/v2/graphql`,
             body:    JSON.stringify({ query: queryString }),
-        }, (error, /*response,*/ body) => {
+        }, (error, response, body) => {
             if (error) 
                 reject(error);
         
