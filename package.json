@@ -9,7 +9,8 @@
   },
   "main": "lib/index",
   "files": [
-    "lib"
+    "lib",
+    "test"
   ],
   "scripts": {
     "test": "gulp test",
