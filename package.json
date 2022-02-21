@@ -10,7 +10,7 @@
   "main": "lib/index",
   "files": [
     "lib",
-    "test"
+    "test/utils"
   ],
   "scripts": {
     "test": "gulp test",
