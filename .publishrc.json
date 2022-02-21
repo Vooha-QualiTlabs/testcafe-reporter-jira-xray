@@ -1,0 +1,8 @@
+{
+    "prePublishScript": false,
+    "validations": {
+        "gitTag": false,
+        "sensitiveData": false,
+        "untrackedFiles": false
+    }
+}
