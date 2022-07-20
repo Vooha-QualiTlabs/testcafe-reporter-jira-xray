@@ -1,8 +1,19 @@
 
 var xray = require( '../test/utils/xray');
 
+require('dotenv').config();
 
 let executionId;
+
+let os;
+
+let browser;
+
+let date;
+
+let osType;
+
+let env;
 
 module.exports = function () {  
                
@@ -13,28 +24,41 @@ module.exports = function () {
             this.startTime = startTime;
             this.testCount = testCount;
     
-            const date = startTime.toString().split(' ');
-            const browser = userAgents[0].split(' ')[0];
-            const os = userAgents[0].split('/')[1];
-            var osType;
-
-            if (os.includes('mac')) 
-                osType = 'Mac';            
-            
-            else if (os.includes('Windows')) 
-                osType = 'Windows';
-              
-            const env = `${osType} ${browser}`;
-            const day = `${date[1]}-${date[2]}-${date[3]}`;
-      
-            executionId = await xray.createTestExecution(osType, env, day);      
+            date = startTime.toString().split(' ');
+            browser = userAgents[0].split(' ')[0];
+            os = userAgents[0].split('/')[1];              
         },
     
         async reportFixtureStart (name, path, meta) {
             this.currentFixtureName = name;
         },
+
+        async reportTestStart (/* name, meta */) {
+           
+        },
     
         async reportTestDone (name, testRunInfo, meta) {
+
+            // Create Test Execution
+            if (os.includes('mac')) {
+                osType = 'Mac';    
+                env = `${osType} ${browser}`;        
+            }
+            else if (os.includes('Windows')) {
+                osType = 'Windows';
+                env = `${osType} ${browser}`;
+            }
+            else if (os.includes('iOS') || os.includes('Android')) {
+                var deviceName = process.env['MOBILE_DEVICE_NAME'];
+
+                osType = os.includes('iOS') ? 'ios' : 'android';
+                env = `${deviceName} ${browser}`;
+            }
+             
+            const day = `${date[1]}-${date[2]}-${date[3]}`;      
+
+            executionId = await xray.createTestExecution(osType, env, day);  
+
             const errors      = testRunInfo.errs;      
             const hasErrors   = !!errors.length;    
             const result      = hasErrors ? 'failed' : 'passed';        

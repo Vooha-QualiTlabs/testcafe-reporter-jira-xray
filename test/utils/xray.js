@@ -91,12 +91,12 @@ async function getAuthTokenForXray () {
     return new Promise((resolve, reject) => {
         Request.post({
             headers: { 'Content-Type': 'application/json' },
-            url:     `https://xray.cloud.getxray.app/api/v2/authenticate`,
+            url:     'https://xray.cloud.getxray.app/api/v2/authenticate',
             body:    JSON.stringify({ client_id: `${process.env.XRAY_CLIENT_ID}`, client_secret: `${process.env.XRAY_CLIENT_SECRET}` }),
         }, (error, response, body) => {
             if (error) 
                 reject(error);
-          
+           
             resolve(JSON.parse(body));
         });
     });    
@@ -109,7 +109,7 @@ async function sendRequestToXrayGraphQL (queryString) {
     return new Promise((resolve, reject) => {
         Request.post({
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${authToken}` },
-            url:     `https://xray.cloud.getxray.app/api/v2/graphql`,
+            url:     'https://xray.cloud.getxray.app/api/v2/graphql',
             body:    JSON.stringify({ query: queryString }),
         }, (error, response, body) => {
             if (error) 
