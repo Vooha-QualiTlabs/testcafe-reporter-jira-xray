@@ -40,7 +40,7 @@ module.exports = function () {
         async reportTestDone (name, testRunInfo, meta) {
 
             // Create Test Execution
-            if (os.includes('mac')) {
+            if (os.includes('mac') || os.includes('OS X')) {
                 osType = 'Mac';    
                 env = `${osType} ${browser}`;        
             }
