@@ -54,6 +54,9 @@ module.exports = function () {
                 osType = os.includes('iOS') ? 'ios' : 'android';
                 env = `${deviceName} ${browser}`;
             }
+            else 
+                env = `${os} ${browser}`;
+            
              
             const day = `${date[1]}-${date[2]}-${date[3]}`;      
 
