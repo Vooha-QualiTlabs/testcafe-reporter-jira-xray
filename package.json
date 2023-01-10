@@ -42,6 +42,6 @@
     "ansi-regex": "^6.0.1",
     "dotenv": "^16.0.0",
     "gulp-eslint": "^6.0.0",
-    "testcafe": "^1.18.3"
+    "testcafe": "^2.2.0"
   }
 }
